@@ -1,0 +1,1705 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$f5E0ji9znnxU4tuoheEkCf$HTkyB9DQQE+EUWoB+p2IwD8jEr6Cod3ALOrgqpJ1lQI=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.edu",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:47.171Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$xmVACx7P9NILvDgo1zXcWl$BQtt4fXGD6OaCsxyaZPIM2hzcm26e8xP+cOBez0eguI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "i.petrov",
+    "first_name": "Петров",
+    "last_name": "Игорь Владимирович",
+    "email": "i.petrov@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:47.738Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$iIbr7woXXW4ilYGDAUMawy$aDrQsNj4XImWwVXS8wYazcBpc/29hnOiz0+Pq+z4mt4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "s.kuznetsova",
+    "first_name": "Кузнецова",
+    "last_name": "Светлана Андреевна",
+    "email": "s.kuznetsova@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:47.989Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$8eKWQA0C8PiWsyq6Nq6da6$uVbjweuXBjehKLRbWu9F+kpz+OsSPkNoHVNBiTJ23Uk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "a.sokolov",
+    "first_name": "Соколов",
+    "last_name": "Артём Дмитриевич",
+    "email": "a.sokolov@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:48.241Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$8xNeSKYXqREQchyv3Hiure$fxkxMP1nxX+Ls/Yx9QkdVtsuDGcpy3keLFkzKb1awTM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "m.lebedeva",
+    "first_name": "Лебедева",
+    "last_name": "Марина Олеговна",
+    "email": "m.lebedeva@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:48.498Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$PFcZuRgmw394EXhi82z7Vw$92j7bW9SYrpNOA3AK8PqK6YoZDDeQAVqRUpjMwspukA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "d.kozlov",
+    "first_name": "Козлов",
+    "last_name": "Денис Сергеевич",
+    "email": "d.kozlov@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:48.752Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$2GptrzJmtt0wRcHMM1J3GQ$XKi9Ie8fgYpt5CnWoefW8p9P4vLv7tZ+eKwx+4DmOrU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "e.novikova",
+    "first_name": "Новикова",
+    "last_name": "Елена Витальевна",
+    "email": "e.novikova@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:49.003Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$gFS6hNGsRjhPF6AIXPxeiw$dqIg7TQ2oj8LTw/zIgRntLxlpM6ChtHzvgIUel759Gk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "p.morozov",
+    "first_name": "Морозов",
+    "last_name": "Павел Ильич",
+    "email": "p.morozov@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:49.254Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$WxmHkjQ240T2rpSBMXWj59$o/e9k1xprepocmiymh7gYy06d8RRP7G+3B0HGEnokw0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "o.volkova",
+    "first_name": "Волкова",
+    "last_name": "Ольга Сергеевна",
+    "email": "o.volkova@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:49.515Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$4eK0LIUCCrKUzlvHz8WRYx$dg0scA/0WPyuxy/quubOHIaat7jmzpx6JLrnOFWM4YM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "a.zaytsev",
+    "first_name": "Зайцев",
+    "last_name": "Андрей Николаевич",
+    "email": "a.zaytsev@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:49.764Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$v0p28En5k2GM19qujHOc7x$Ll0kRzB04nNVRchPs0bpmCPXXCUaACsIzWETuVhaYp8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "i.pavlova",
+    "first_name": "Павлова",
+    "last_name": "Ирина Михайловна",
+    "email": "i.pavlova@staff.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:50.018Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ARpBCVHuJBMdxIFsozeN2E$gqF97vSykzZ9gcFJRDMVbGPllFpwOqA/NNqLfutv29U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "a.stepanova",
+    "first_name": "Степанова",
+    "last_name": "Анна Кирилловна",
+    "email": "a.stepanova@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:50.268Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$DqkVMrGPvbSAnzz6ae0pOL$r9zOb3VT+fij8RI1W38XNtCpDsla2O2SSQhGI6b/lqQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "m.orlov",
+    "first_name": "Орлов",
+    "last_name": "Максим Дмитриевич",
+    "email": "m.orlov@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:50.537Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$mkjr9sYZ6fdFEkCuUcs8Yu$aF5u5gr/B3zjUTiauCScK/xw6Yoc3A5gSrfdjZRGp24=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "p.kirillova",
+    "first_name": "Кириллова",
+    "last_name": "Полина Егоровна",
+    "email": "p.kirillova@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:50.790Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ZstaQ5DCv8cVfwYStVZgMx$Jwz9eBlcryH8Xs3v05eqklNAhjp4YKfbGAcpSXCE5R0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "d.efimov",
+    "first_name": "Ефимов",
+    "last_name": "Данила Романович",
+    "email": "d.efimov@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:51.043Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$B7lAZeYDM8WJ4UidwNmKel$dXMzaGN1jSymxUHso8RZMmpgDxDdqvmtBM5UuM5Inuk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "y.zakharova",
+    "first_name": "Захарова",
+    "last_name": "Юлия Артёмовна",
+    "email": "y.zakharova@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:51.302Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$T6X4hquoNyyitOqFeiZM5D$4UVfyJbtbifB+2Ja9r/9iHG7uKfxtHPMOZdtk38IKjU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "e.smirnov",
+    "first_name": "Смирнов",
+    "last_name": "Егор Львович",
+    "email": "e.smirnov@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:51.556Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$PkN2YUVAJfCLHN96IGtaZ6$gUmxT7QRZrIk2IFx1O8TfNSOVoyGT/ofIfvhD3FO/pI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "d.ivanova",
+    "first_name": "Иванова",
+    "last_name": "Дарья Максимовна",
+    "email": "d.ivanova@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:51.808Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$AHrK5E8bshxM1Sl21XtIVn$kOeIMSAJHcvlc6ejJP/spwL4+o+ieESi1DOGy2P36eg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "a.nikitin",
+    "first_name": "Никитин",
+    "last_name": "Артём Валерьевич",
+    "email": "a.nikitin@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:52.058Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 20,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$EHaHJrAK4obQS6FClXapQw$fnuICko8KsnzAbwak3ZeZFU7bxLGhKk+REIPFh3gJ/s=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "v.grigoreva",
+    "first_name": "Григорьева",
+    "last_name": "Вера Олеговна",
+    "email": "v.grigoreva@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:52.319Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 21,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ifdwOkLlyjr8zsBkrU5ztk$p84aeSWBN6QnTMyAv+oC6XuPf3LiUU9DzYzZB1/a2KI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "i.fedorov",
+    "first_name": "Фёдоров",
+    "last_name": "Илья Константинович",
+    "email": "i.fedorov@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:52.570Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 22,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$MTFNfSD6ZBL3Dcw4XOmVpB$6ENKHq3ln0tLFyOGiNftXRFBYsDT35/Yi0iyrOvzR8o=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "s.romanova",
+    "first_name": "Романова",
+    "last_name": "Софья Игоревна",
+    "email": "s.romanova@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:52.821Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 23,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$N95ChNIZ1zekx77uE49p9r$YTgswR8qX8uKzMkJAN76XhULZhB1hEiQ9S6n0Zi41cA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "t.belov",
+    "first_name": "Белов",
+    "last_name": "Тимофей Артурович",
+    "email": "t.belov@students.example.edu",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-15T11:09:53.072Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 1,
+  "fields": {
+    "code": "09.03.02",
+    "title": "Информационные системы и технологии",
+    "level": "bachelor"
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 2,
+  "fields": {
+    "code": "09.03.01",
+    "title": "Информатика и вычислительная техника",
+    "level": "bachelor"
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 3,
+  "fields": {
+    "code": "09.03.03",
+    "title": "Прикладная информатика",
+    "level": "bachelor"
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 4,
+  "fields": {
+    "code": "09.03.04",
+    "title": "Программная инженерия",
+    "level": "bachelor"
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 5,
+  "fields": {
+    "code": "09.04.01",
+    "title": "Информатика и вычислительная техника",
+    "level": "master"
+  }
+},
+{
+  "model": "core.direction",
+  "pk": 6,
+  "fields": {
+    "code": "09.02.07",
+    "title": "Информационные системы и программирование",
+    "level": "spo"
+  }
+},
+{
+  "model": "core.group",
+  "pk": 1,
+  "fields": {
+    "name": "ИСдо-45",
+    "direction": 6,
+    "enrollment_year": 2022
+  }
+},
+{
+  "model": "core.group",
+  "pk": 2,
+  "fields": {
+    "name": "ИСдо-46",
+    "direction": 6,
+    "enrollment_year": 2023
+  }
+},
+{
+  "model": "core.group",
+  "pk": 3,
+  "fields": {
+    "name": "ИСдо-47",
+    "direction": 6,
+    "enrollment_year": 2024
+  }
+},
+{
+  "model": "core.group",
+  "pk": 4,
+  "fields": {
+    "name": "ИСбо-41",
+    "direction": 1,
+    "enrollment_year": 2023
+  }
+},
+{
+  "model": "core.group",
+  "pk": 5,
+  "fields": {
+    "name": "ИСбо-42",
+    "direction": 1,
+    "enrollment_year": 2024
+  }
+},
+{
+  "model": "core.group",
+  "pk": 6,
+  "fields": {
+    "name": "ИВТ-21",
+    "direction": 2,
+    "enrollment_year": 2025
+  }
+},
+{
+  "model": "core.group",
+  "pk": 7,
+  "fields": {
+    "name": "ПИ-31",
+    "direction": 3,
+    "enrollment_year": 2024
+  }
+},
+{
+  "model": "core.group",
+  "pk": 8,
+  "fields": {
+    "name": "ПИнж-31",
+    "direction": 4,
+    "enrollment_year": 2024
+  }
+},
+{
+  "model": "core.group",
+  "pk": 9,
+  "fields": {
+    "name": "ПИ-11",
+    "direction": 5,
+    "enrollment_year": 2025
+  }
+},
+{
+  "model": "core.group",
+  "pk": 10,
+  "fields": {
+    "name": "ПИ-21",
+    "direction": 5,
+    "enrollment_year": 2024
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "full_name": "Петров Игорь Владимирович",
+    "position": "доцент",
+    "department": "Кафедра информационных систем"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "full_name": "Кузнецова Светлана Андреевна",
+    "position": "профессор",
+    "department": "Кафедра программной инженерии"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "full_name": "Соколов Артём Дмитриевич",
+    "position": "старший преподаватель",
+    "department": "Кафедра информационных систем"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 4,
+  "fields": {
+    "user": 5,
+    "full_name": "Лебедева Марина Олеговна",
+    "position": "доцент",
+    "department": "Кафедра прикладной математики и информатики"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 5,
+  "fields": {
+    "user": 6,
+    "full_name": "Козлов Денис Сергеевич",
+    "position": "старший преподаватель",
+    "department": "Кафедра программной инженерии"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "full_name": "Новикова Елена Витальевна",
+    "position": "доцент",
+    "department": "Кафедра информационных систем"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "full_name": "Морозов Павел Ильич",
+    "position": "профессор",
+    "department": "Кафедра прикладной математики и информатики"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "full_name": "Волкова Ольга Сергеевна",
+    "position": "старший преподаватель",
+    "department": "Кафедра программной инженерии"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "full_name": "Зайцев Андрей Николаевич",
+    "position": "доцент",
+    "department": "Кафедра информационных систем"
+  }
+},
+{
+  "model": "core.supervisor",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "full_name": "Павлова Ирина Михайловна",
+    "position": "преподаватель",
+    "department": "Отделение информационных технологий"
+  }
+},
+{
+  "model": "core.student",
+  "pk": 1,
+  "fields": {
+    "user": 12,
+    "full_name": "Степанова Анна Кирилловна",
+    "record_book_number": "ИС-230114",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 2,
+  "fields": {
+    "user": 13,
+    "full_name": "Орлов Максим Дмитриевич",
+    "record_book_number": "ИС-230121",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 3,
+  "fields": {
+    "user": 14,
+    "full_name": "Кириллова Полина Егоровна",
+    "record_book_number": "ИС-230133",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 4,
+  "fields": {
+    "user": 15,
+    "full_name": "Ефимов Данила Романович",
+    "record_book_number": "ИС-230145",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 5,
+  "fields": {
+    "user": 16,
+    "full_name": "Захарова Юлия Артёмовна",
+    "record_book_number": "ИС-230150",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 6,
+  "fields": {
+    "user": 17,
+    "full_name": "Смирнов Егор Львович",
+    "record_book_number": "ИС-230158",
+    "group": 2
+  }
+},
+{
+  "model": "core.student",
+  "pk": 7,
+  "fields": {
+    "user": 18,
+    "full_name": "Иванова Дарья Максимовна",
+    "record_book_number": "ИС-240102",
+    "group": 3
+  }
+},
+{
+  "model": "core.student",
+  "pk": 8,
+  "fields": {
+    "user": 19,
+    "full_name": "Никитин Артём Валерьевич",
+    "record_book_number": "ИС-240110",
+    "group": 3
+  }
+},
+{
+  "model": "core.student",
+  "pk": 9,
+  "fields": {
+    "user": 20,
+    "full_name": "Григорьева Вера Олеговна",
+    "record_book_number": "ПИ-240025",
+    "group": 8
+  }
+},
+{
+  "model": "core.student",
+  "pk": 10,
+  "fields": {
+    "user": 21,
+    "full_name": "Фёдоров Илья Константинович",
+    "record_book_number": "ПИ-240031",
+    "group": 8
+  }
+},
+{
+  "model": "core.student",
+  "pk": 11,
+  "fields": {
+    "user": 22,
+    "full_name": "Романова Софья Игоревна",
+    "record_book_number": "МГ-250012",
+    "group": 9
+  }
+},
+{
+  "model": "core.student",
+  "pk": 12,
+  "fields": {
+    "user": 23,
+    "full_name": "Белов Тимофей Артурович",
+    "record_book_number": "МГ-250018",
+    "group": 9
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 1,
+  "fields": {
+    "supervisor": 1,
+    "academic_year": "2026/2027",
+    "max_students": 5
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 2,
+  "fields": {
+    "supervisor": 2,
+    "academic_year": "2026/2027",
+    "max_students": 4
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 3,
+  "fields": {
+    "supervisor": 3,
+    "academic_year": "2026/2027",
+    "max_students": 4
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 4,
+  "fields": {
+    "supervisor": 4,
+    "academic_year": "2026/2027",
+    "max_students": 3
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 5,
+  "fields": {
+    "supervisor": 5,
+    "academic_year": "2026/2027",
+    "max_students": 3
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 6,
+  "fields": {
+    "supervisor": 6,
+    "academic_year": "2026/2027",
+    "max_students": 3
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 7,
+  "fields": {
+    "supervisor": 7,
+    "academic_year": "2026/2027",
+    "max_students": 4
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 8,
+  "fields": {
+    "supervisor": 8,
+    "academic_year": "2026/2027",
+    "max_students": 3
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 9,
+  "fields": {
+    "supervisor": 9,
+    "academic_year": "2026/2027",
+    "max_students": 5
+  }
+},
+{
+  "model": "core.supervisorlimit",
+  "pk": 10,
+  "fields": {
+    "supervisor": 10,
+    "academic_year": "2026/2027",
+    "max_students": 3
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 1,
+  "fields": {
+    "title": "Разработка веб-сервиса бронирования учебных аудиторий на Django",
+    "direction": 6,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 1. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 2,
+  "fields": {
+    "title": "Интеллектуальная классификация обращений в техподдержку с использованием больших языковых моделей",
+    "direction": 6,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 2. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T09:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 3,
+  "fields": {
+    "title": "Автоматизация учёта заявок лаборатории колледжа средствами Django ORM",
+    "direction": 6,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 3. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T12:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 4,
+  "fields": {
+    "title": "Прогнозирование успеваемости студентов на основе данных электронного журнала",
+    "direction": 6,
+    "supervisor": 2,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 4. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T15:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 5,
+  "fields": {
+    "title": "Веб-платформа олимпиадных задач с автоматической проверкой решений на Python",
+    "direction": 6,
+    "supervisor": 2,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 5. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T18:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 6,
+  "fields": {
+    "title": "Разработка мобильного приложения навигации по учебному корпусу",
+    "direction": 6,
+    "supervisor": 3,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 6. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-01T21:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 7,
+  "fields": {
+    "title": "Анализ уязвимостей REST API учебного сервиса и способы их устранения",
+    "direction": 6,
+    "supervisor": 3,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 7. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T00:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 8,
+  "fields": {
+    "title": "Система учёта инвентаря компьютерных классов с QR-метками",
+    "direction": 6,
+    "supervisor": 4,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 8. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T03:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 9,
+  "fields": {
+    "title": "Панель показателей успеваемости для заведующего отделением",
+    "direction": 4,
+    "supervisor": 5,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 9. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 10,
+  "fields": {
+    "title": "Чат-бот расписания занятий на платформе мессенджера MAX",
+    "direction": 4,
+    "supervisor": 6,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "taken",
+    "description": "Демонстрационная тема 10. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T09:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 11,
+  "fields": {
+    "title": "Telegram-бот напоминаний о сроках сдачи учебных работ",
+    "direction": 6,
+    "supervisor": 7,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 11. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T12:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 12,
+  "fields": {
+    "title": "Мониторинг компьютера класса на Raspberry Pi с выводом метрик",
+    "direction": 6,
+    "supervisor": 8,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 12. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T15:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 13,
+  "fields": {
+    "title": "Лендинг приёмной комиссии с формой записи на дни открытых дверей",
+    "direction": 6,
+    "supervisor": 9,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 13. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T18:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 14,
+  "fields": {
+    "title": "Анализ тональности отзывов студентов о преподавателях",
+    "direction": 6,
+    "supervisor": 10,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 14. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-02T21:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 15,
+  "fields": {
+    "title": "Визуализация расписания группы в виде канбан-доски",
+    "direction": 6,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 15. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T00:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 16,
+  "fields": {
+    "title": "Хранилище учебных материалов с версиями на Django и SQLite",
+    "direction": 6,
+    "supervisor": 2,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 16. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T03:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 17,
+  "fields": {
+    "title": "Сервис проверки лабораторных работ на совпадения по метаданным",
+    "direction": 6,
+    "supervisor": 3,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 17. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 18,
+  "fields": {
+    "title": "Генератор индивидуальных заданий по SQL для практики",
+    "direction": 6,
+    "supervisor": 4,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 18. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T09:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 19,
+  "fields": {
+    "title": "Веб-сервис подбора наставников для первокурсников",
+    "direction": 6,
+    "supervisor": 5,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 19. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T12:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 20,
+  "fields": {
+    "title": "Электронный стенд «История отделения» на MapLibre",
+    "direction": 6,
+    "supervisor": 6,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 20. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T15:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 21,
+  "fields": {
+    "title": "Разработка REST API мобильного расписания занятий",
+    "direction": 1,
+    "supervisor": 7,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 21. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T18:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 22,
+  "fields": {
+    "title": "Сравнение SQLite и PostgreSQL в учебном проекте на Django",
+    "direction": 1,
+    "supervisor": 8,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 22. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-03T21:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 23,
+  "fields": {
+    "title": "Автоматизация проверки каталога тем тестами на Selenium",
+    "direction": 1,
+    "supervisor": 9,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 23. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T00:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 24,
+  "fields": {
+    "title": "ИИ-подсказки формулировок тем курсовых работ",
+    "direction": 1,
+    "supervisor": 10,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 24. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T03:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 25,
+  "fields": {
+    "title": "Система обратной связи по практическим заданиям",
+    "direction": 1,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 25. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 26,
+  "fields": {
+    "title": "Сервис подтверждения авторства учебных работ",
+    "direction": 1,
+    "supervisor": 2,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 26. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T09:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 27,
+  "fields": {
+    "title": "Мониторинг PageSpeed учебного портала с автоматическими отчётами",
+    "direction": 2,
+    "supervisor": 3,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 27. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T12:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 28,
+  "fields": {
+    "title": "Разработка плагина VS Code для учебного репозитория",
+    "direction": 2,
+    "supervisor": 4,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 28. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T15:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 29,
+  "fields": {
+    "title": "Анализ журналов сервера Django средствами Prometheus",
+    "direction": 2,
+    "supervisor": 5,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 29. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T18:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 30,
+  "fields": {
+    "title": "Кэширование каталога тем для ускорения отдачи страниц",
+    "direction": 2,
+    "supervisor": 6,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 30. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-04T21:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 31,
+  "fields": {
+    "title": "Настольный календарь дедлайнов для учебной группы",
+    "direction": 2,
+    "supervisor": 7,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 31. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T00:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 32,
+  "fields": {
+    "title": "Голосовой ассистент навигации для слабовидящих студентов",
+    "direction": 3,
+    "supervisor": 8,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 32. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T03:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 33,
+  "fields": {
+    "title": "Тема оформления для учебной CMS отделения",
+    "direction": 3,
+    "supervisor": 9,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 33. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 34,
+  "fields": {
+    "title": "Переход от монолита к микросервисам на учебном примере",
+    "direction": 3,
+    "supervisor": 10,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 34. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T09:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 35,
+  "fields": {
+    "title": "Аутентификация по QR-коду в учебной сети колледжа",
+    "direction": 3,
+    "supervisor": 1,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 35. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T12:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 36,
+  "fields": {
+    "title": "Сравнение Django и FastAPI на типовом учебном проекте",
+    "direction": 4,
+    "supervisor": 2,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 36. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T15:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 37,
+  "fields": {
+    "title": "Дополненная реальность в подсказках лаборатории электроники",
+    "direction": 4,
+    "supervisor": 3,
+    "proposed_by": null,
+    "work_type": "course",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 37. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-09-05T18:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 38,
+  "fields": {
+    "title": "Оптимизация SQL-запросов каталога тем и индексов",
+    "direction": 5,
+    "supervisor": 4,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 38. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-11-08T06:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 39,
+  "fields": {
+    "title": "Обмен в реальном времени на Django Channels для уведомлений",
+    "direction": 5,
+    "supervisor": 5,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 39. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-11-08T07:00:00Z"
+  }
+},
+{
+  "model": "core.topic",
+  "pk": 40,
+  "fields": {
+    "title": "Дашборд ресурсов компьютерного кластера колледжа",
+    "direction": 5,
+    "supervisor": 6,
+    "proposed_by": null,
+    "work_type": "graduate",
+    "academic_year": "2026/2027",
+    "status": "free",
+    "description": "Демонстрационная тема 40. Работа включает разработку и исследование в рамках выбранного направления, защиту в конце семестра.",
+    "created_at": "2026-11-08T08:00:00Z"
+  }
+},
+{
+  "model": "core.application",
+  "pk": 1,
+  "fields": {
+    "student": 1,
+    "topic": 1,
+    "status": "approved",
+    "comment": "Пишу на Django с прошлого курса, хочу продолжить проект.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-20T07:00:00Z",
+    "decided_at": "2026-10-23T07:00:00Z",
+    "decided_by": 1
+  }
+},
+{
+  "model": "core.application",
+  "pk": 2,
+  "fields": {
+    "student": 2,
+    "topic": 2,
+    "status": "approved",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-10-20T08:15:00Z",
+    "decided_at": "2026-10-23T09:00:00Z",
+    "decided_by": 1
+  }
+},
+{
+  "model": "core.application",
+  "pk": 3,
+  "fields": {
+    "student": 3,
+    "topic": 3,
+    "status": "approved",
+    "comment": "Работаю в службе техподдержки колледжа, есть доступ к данным.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-21T06:40:00Z",
+    "decided_at": "2026-10-27T07:00:00Z",
+    "decided_by": 1
+  }
+},
+{
+  "model": "core.application",
+  "pk": 4,
+  "fields": {
+    "student": 4,
+    "topic": 4,
+    "status": "approved",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-10-22T11:20:00Z",
+    "decided_at": "2026-10-29T07:00:00Z",
+    "decided_by": 2
+  }
+},
+{
+  "model": "core.application",
+  "pk": 5,
+  "fields": {
+    "student": 5,
+    "topic": 5,
+    "status": "approved",
+    "comment": "Участвую в олимпиадах по программированию.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-23T07:05:00Z",
+    "decided_at": "2026-10-30T07:00:00Z",
+    "decided_by": 2
+  }
+},
+{
+  "model": "core.application",
+  "pk": 6,
+  "fields": {
+    "student": 6,
+    "topic": 6,
+    "status": "approved",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-10-27T13:30:00Z",
+    "decided_at": "2026-11-03T07:00:00Z",
+    "decided_by": 3
+  }
+},
+{
+  "model": "core.application",
+  "pk": 7,
+  "fields": {
+    "student": 7,
+    "topic": 7,
+    "status": "approved",
+    "comment": "Прошёл практику по информационной безопасности.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-28T06:10:00Z",
+    "decided_at": "2026-11-04T07:00:00Z",
+    "decided_by": 3
+  }
+},
+{
+  "model": "core.application",
+  "pk": 8,
+  "fields": {
+    "student": 8,
+    "topic": 8,
+    "status": "approved",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-10-28T09:45:00Z",
+    "decided_at": "2026-11-04T10:00:00Z",
+    "decided_by": 4
+  }
+},
+{
+  "model": "core.application",
+  "pk": 9,
+  "fields": {
+    "student": 9,
+    "topic": 9,
+    "status": "approved",
+    "comment": "Готовлю панель показателей для своего диплома.",
+    "reject_reason": null,
+    "submitted_at": "2026-11-03T07:30:00Z",
+    "decided_at": "2026-11-06T07:00:00Z",
+    "decided_by": 5
+  }
+},
+{
+  "model": "core.application",
+  "pk": 10,
+  "fields": {
+    "student": 10,
+    "topic": 10,
+    "status": "approved",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-11-04T08:00:00Z",
+    "decided_at": "2026-11-10T07:00:00Z",
+    "decided_by": 6
+  }
+},
+{
+  "model": "core.application",
+  "pk": 11,
+  "fields": {
+    "student": 11,
+    "topic": 29,
+    "status": "rejected",
+    "comment": "",
+    "reject_reason": "Тема рассчитана на бакалавриат, выберите тему из магистерского списка.",
+    "submitted_at": "2026-10-29T12:00:00Z",
+    "decided_at": "2026-10-31T07:30:00Z",
+    "decided_by": 5
+  }
+},
+{
+  "model": "core.application",
+  "pk": 12,
+  "fields": {
+    "student": 12,
+    "topic": 28,
+    "status": "rejected",
+    "comment": "",
+    "reject_reason": "Тема пока не согласована для магистратуры, предложу её в следующем наборе.",
+    "submitted_at": "2026-10-29T13:20:00Z",
+    "decided_at": "2026-11-02T08:00:00Z",
+    "decided_by": 4
+  }
+},
+{
+  "model": "core.application",
+  "pk": 13,
+  "fields": {
+    "student": 10,
+    "topic": 15,
+    "status": "withdrawn",
+    "comment": "Передумал, тема окажется слишком похожей на прошлый проект.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-20T07:30:00Z",
+    "decided_at": "2026-10-21T06:00:00Z",
+    "decided_by": null
+  }
+},
+{
+  "model": "core.application",
+  "pk": 14,
+  "fields": {
+    "student": 11,
+    "topic": 30,
+    "status": "withdrawn",
+    "comment": "Нашёл тему, которая ближе к диссертационным планам.",
+    "reject_reason": null,
+    "submitted_at": "2026-10-27T10:00:00Z",
+    "decided_at": "2026-11-03T09:30:00Z",
+    "decided_by": null
+  }
+},
+{
+  "model": "core.application",
+  "pk": 15,
+  "fields": {
+    "student": 11,
+    "topic": 39,
+    "status": "submitted",
+    "comment": "",
+    "reject_reason": null,
+    "submitted_at": "2026-11-14T07:00:00Z",
+    "decided_at": null,
+    "decided_by": null
+  }
+},
+{
+  "model": "core.application",
+  "pk": 16,
+  "fields": {
+    "student": 12,
+    "topic": 38,
+    "status": "submitted",
+    "comment": "Занимаюсь оптимизацией запросов на своей прошлой работе.",
+    "reject_reason": null,
+    "submitted_at": "2026-11-14T08:30:00Z",
+    "decided_at": null,
+    "decided_by": null
+  }
+},
+{
+  "model": "core.approvalorder",
+  "pk": 1,
+  "fields": {
+    "academic_year": "2025/2026",
+    "file": "orders\\2025\\prikaz_2025-2026.pdf",
+    "uploaded_by": 1,
+    "uploaded_at": "2025-12-10T09:00:00Z",
+    "note": "Приказ № 312 от 01.12.2025 — демонстрационный образец для страницы сводки"
+  }
+}
+]
