@@ -1,0 +1,135 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page_title|default:'Банк тем' }}{% endblock %} · Банк тем</title>
+  <meta name="description" content="Банк тем курсовых и дипломных работ: каталог тем, заявки руководителям, сводка распределения.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к основному содержанию</a>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="{% url 'core:topics' %}">
+        <span class="logo__mark" aria-hidden="true">Б</span>
+        <span class="logo__text">Банк тем</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="{% url 'core:topics' %}" {% if nav == 'topics' %}aria-current="page"{% endif %}>Каталог</a></li>
+          {% if role == 'student' %}
+            <li><a href="{% url 'core:my_applications' %}" {% if nav == 'my' %}aria-current="page"{% endif %}>Мои заявки</a></li>
+          {% endif %}
+          {% if role == 'supervisor' %}
+            <li><a href="{% url 'core:supervisor_applications' %}" {% if nav == 'supervisor' %}aria-current="page"{% endif %}>Заявки</a></li>
+          {% endif %}
+          {% if role == 'head' %}
+            <li><a href="{% url 'core:dashboard' %}" {% if nav == 'dashboard' %}aria-current="page"{% endif %}>Сводка</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <form class="header-search" action="{% url 'core:topics' %}" method="get" role="search"
+            data-suggest-url="{% url 'core:topic_suggest' %}">
+        {# Активные фильтры не теряются, когда ищут через шапку. #}
+        {% if request.GET.direction %}<input type="hidden" name="direction" value="{{ request.GET.direction }}">{% endif %}
+        {% if request.GET.supervisor %}<input type="hidden" name="supervisor" value="{{ request.GET.supervisor }}">{% endif %}
+        {% if request.GET.status %}<input type="hidden" name="status" value="{{ request.GET.status }}">{% endif %}
+        {% if request.GET.work_type %}<input type="hidden" name="work_type" value="{{ request.GET.work_type }}">{% endif %}
+        <label class="visually-hidden" for="header-search-input">Поиск по теме или руководителю</label>
+        <input type="search" id="header-search-input" name="q" value="{{ search_query }}"
+               placeholder="Поиск по теме или руководителю" autocomplete="off">
+        <ul class="search-suggest" hidden></ul>
+      </form>
+
+      <div class="header-actions">
+        {% if role == 'guest' %}
+          <a class="btn btn--light" href="{% url 'accounts:login' %}">Войти</a>
+          <a class="btn btn--primary" href="{% url 'accounts:register' %}">Регистрация</a>
+        {% else %}
+          <span class="user-chip" data-user-menu>
+            <span class="user-chip__name">{{ user_short_name }}</span>
+            <span class="user-chip__avatar" aria-hidden="true">{{ user_initials }}</span>
+          </span>
+          <div class="user-menu" hidden>
+            {% if role == 'student' %}
+              <a href="{% url 'core:my_applications' %}">Мои заявки</a>
+            {% elif role == 'supervisor' %}
+              <a href="{% url 'core:supervisor_applications' %}">Заявки на мои темы</a>
+            {% elif role == 'head' %}
+              <a href="{% url 'core:dashboard' %}">Сводка распределения</a>
+            {% endif %}
+            <a href="{% url 'accounts:password_change' %}">Смена пароля</a>
+            <form action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
+              <button type="submit">Выход</button>
+            </form>
+          </div>
+        {% endif %}
+      </div>
+
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <form class="mobile-search" action="{% url 'core:topics' %}" method="get" role="search">
+        <label class="visually-hidden" for="mobile-search-input">Поиск по теме или руководителю</label>
+        <input type="search" id="mobile-search-input" name="q" value="{{ search_query }}"
+               placeholder="Поиск по теме или руководителю">
+      </form>
+      <ul>
+
+        <li><a href="{% url 'core:topics' %}">Каталог</a></li>
+        {% if role == 'student' %}
+          <li><a href="{% url 'core:my_applications' %}">Мои заявки</a></li>
+        {% endif %}
+        {% if role == 'supervisor' %}
+          <li><a href="{% url 'core:supervisor_applications' %}">Заявки на мои темы</a></li>
+        {% endif %}
+        {% if role == 'head' %}
+          <li><a href="{% url 'core:dashboard' %}">Сводка распределения</a></li>
+          <li><a href="{% url 'core:vedomost' %}">Ведомость</a></li>
+        {% endif %}
+        <li><a href="{% url 'core:about' %}">О проекте</a></li>
+        {% if role == 'guest' %}
+          <li><a href="{% url 'accounts:login' %}">Войти</a></li>
+          <li><a href="{% url 'accounts:register' %}">Регистрация</a></li>
+        {% else %}
+          <li><a href="{% url 'accounts:password_change' %}">Смена пароля</a></li>
+          <li>
+            <form action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
+              <button type="submit">Выход</button>
+            </form>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+
+  <main id="content">
+    {% include 'includes/messages.html' %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p>© 2026 Банк тем курсовых и дипломных работ · учебный проект, группа ИСдо-46</p>
+      <nav aria-label="Служебная навигация">
+        <a href="{% url 'core:topics' %}">Каталог</a>
+        <a href="{% url 'core:about' %}">О проекте</a>
+        <a href="{% url 'accounts:login' %}">Вход</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

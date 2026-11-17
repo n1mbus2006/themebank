@@ -1,0 +1,36 @@
+{% comment %}
+Карточка темы в каталоге (FR-01). Данные приходят из моделей занятия 5:
+название, руководитель, направление, статус, «Закреплено X из Y» (FR-09).
+Занятая тема или исчерпанный лимит отключают кнопку (FR-07, FR-08).
+{% endcomment %}
+<article class="topic-card">
+  <div class="topic-card__badges">
+    <span class="badge badge--neutral">{{ card.topic.get_work_type_display }}</span>
+    {% if card.topic.status == 'free' %}
+      {% if card.limit_exhausted %}
+        <span class="badge badge--warning">Лимит исчерпан</span>
+      {% else %}
+        <span class="badge badge--success">Свободна</span>
+      {% endif %}
+    {% else %}
+      <span class="badge badge--neutral">Закреплена</span>
+    {% endif %}
+  </div>
+  <h3 class="topic-card__title"><a href="{% url 'core:topic_detail' card.topic.pk %}">{{ card.topic.title }}</a></h3>
+  <p class="topic-card__meta">
+    {{ card.topic.supervisor.full_name }} · {{ card.topic.supervisor.position }}<br>
+    {{ card.topic.direction }} · {{ card.topic.academic_year }}
+  </p>
+  <div class="topic-card__footer">
+    {% if card.topic.status == 'taken' %}
+      <span class="topic-card__load">Тема закреплена</span>
+      <span class="btn btn--disabled" aria-disabled="true">Подать заявку</span>
+    {% elif card.limit %}
+      <span class="topic-card__load">Закреплено {{ card.limit.occupied }} из {{ card.limit.max_students }}</span>
+      <a class="btn btn--primary" href="{% url 'core:topic_detail' card.topic.pk %}#apply">Подать заявку</a>
+    {% else %}
+      <span class="topic-card__load">Лимит не задан</span>
+      <span class="btn btn--disabled" aria-disabled="true">Подать заявку</span>
+    {% endif %}
+  </div>
+</article>

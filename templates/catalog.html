@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Каталог тем · {{ academic_year }}{% endblock %}
+
+{% block content %}
+{% comment %}
+Каталог тем — главная страница (занятие 7, макет «01_Каталог»).
+Слева сайдбар фильтров, справа сетка карточек; на мобильной ширине
+фильтры сворачиваются в аккордеон (details), сетка становится колонкой.
+{% endcomment %}
+<div class="container page">
+  <div class="catalog-head">
+    <div>
+      <h1>Каталог тем <span class="catalog-head__year">· {{ academic_year }}</span></h1>
+      <p class="page-subtitle">
+        Найдено {{ found_total }} из {{ all_total }} тем · сортировка и фильтры
+        сохраняются при переходе по страницам
+      </p>
+    </div>
+    {# Сортировка отправляется сразу при выборе пункта (занятие 8). #}
+    <form class="sort-form" method="get" action="{% url 'core:topics' %}" data-autosubmit>
+      {% for key, value in request.GET.items %}{% if key != 'sort' and key != 'page' %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endif %}{% endfor %}
+      <label class="field__label" for="sort">Сортировка</label>
+      <select id="sort" name="sort" class="field__input">
+        <option value="new" {% if request.GET.sort != 'title' and request.GET.sort != 'supervisor' %}selected{% endif %}>по дате добавления</option>
+        <option value="title" {% if request.GET.sort == 'title' %}selected{% endif %}>по названию</option>
+        <option value="supervisor" {% if request.GET.sort == 'supervisor' %}selected{% endif %}>по ФИО руководителя</option>
+      </select>
+      <noscript><button class="btn btn--secondary" type="submit">Применить</button></noscript>
+    </form>
+  </div>
+
+  {# На мобильной ширине поиск живёт прямо на странице, как в макете 02. #}
+  <form class="mobile-search" method="get" action="{% url 'core:topics' %}" role="search">
+    <label class="visually-hidden" for="catalog-search">Поиск по теме или руководителю</label>
+    <input type="search" id="catalog-search" name="q" value="{{ search_query }}"
+           placeholder="Поиск по теме или руководителю">
+    {# Активные фильтры не сбрасываются, если искать со страницы. #}
+    {% for key, value in request.GET.items %}{% if key != 'q' and key != 'page' %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endif %}{% endfor %}
+  </form>
+
+  <div class="catalog-layout">
+    <aside class="filters" aria-label="Фильтры каталога">
+      <details class="filters__toggle" {% if request.GET.direction or request.GET.supervisor or request.GET.status or request.GET.work_type %}open{% endif %}>
+        <summary>
+          Фильтры
+          {% if request.GET.direction or request.GET.supervisor or request.GET.status or request.GET.work_type %}
+            <span class="filters__count">применены</span>
+          {% endif %}
+        </summary>
+        <form method="get" action="{% url 'core:topics' %}">
+          {# Поиск сохраняется при смене фильтров. #}
+          {% if search_query %}<input type="hidden" name="q" value="{{ search_query }}">{% endif %}
+
+          <div class="field">
+            <label class="field__label" for="f-direction">Направление</label>
+            <select id="f-direction" name="direction" class="field__input {% if request.GET.direction %}field__input--active{% endif %}">
+              <option value="">Все направления</option>
+              {% for direction in directions %}
+                <option value="{{ direction.pk }}" {% if request.GET.direction == direction.pk|stringformat:'s' %}selected{% endif %}>
+                  {{ direction.code }} {{ direction.title }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="f-supervisor">Руководитель</label>
+            <select id="f-supervisor" name="supervisor" class="field__input {% if request.GET.supervisor %}field__input--active{% endif %}">
+              <option value="">Все руководители</option>
+              {% for supervisor in supervisors %}
+                <option value="{{ supervisor.pk }}" {% if request.GET.supervisor == supervisor.pk|stringformat:'s' %}selected{% endif %}>
+                  {{ supervisor.full_name }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <fieldset class="chips">
+            <legend>Статус темы</legend>
+            <label class="chip"><input type="radio" name="status" value="" {% if not request.GET.status %}checked{% endif %}><span>Все</span></label>
+            <label class="chip"><input type="radio" name="status" value="free" {% if request.GET.status == 'free' %}checked{% endif %}><span>Свободны</span></label>
+            <label class="chip"><input type="radio" name="status" value="taken" {% if request.GET.status == 'taken' %}checked{% endif %}><span>Закреплены</span></label>
+          </fieldset>
+
+          <fieldset class="chips">
+            <legend>Тип работы</legend>
+            <label class="chip"><input type="radio" name="work_type" value="" {% if not request.GET.work_type %}checked{% endif %}><span>Любой</span></label>
+            <label class="chip"><input type="radio" name="work_type" value="course" {% if request.GET.work_type == 'course' %}checked{% endif %}><span>Курсовая</span></label>
+            <label class="chip"><input type="radio" name="work_type" value="graduate" {% if request.GET.work_type == 'graduate' %}checked{% endif %}><span>Дипломная</span></label>
+          </fieldset>
+
+          <button class="btn btn--primary filters__apply" type="submit">Применить</button>
+          <a class="filters__reset" href="{% url 'core:topics' %}">Сбросить фильтры</a>
+        </form>
+      </details>
+    </aside>
+
+    <div class="catalog-results">
+      {% if cards %}
+        <div class="topics-grid">
+          {% for card in cards %}{% include 'includes/topic_card.html' %}{% endfor %}
+        </div>
+        {% include 'includes/pagination.html' %}
+      {% else %}
+        <section class="empty-state">
+          <h2>По вашему запросу ничего не найдено</h2>
+          <p>Попробуйте изменить формулировку поиска или снять фильтры —
+             в каталоге {{ all_total }} тем за {{ academic_year }} учебный год.</p>
+          <a class="btn btn--secondary" href="{% url 'core:topics' %}">Сбросить фильтры</a>
+        </section>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/catalog.js' %}" defer></script>{% endblock %}
