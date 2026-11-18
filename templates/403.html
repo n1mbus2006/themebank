@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Нет доступа{% endblock %}
+
+{% block content %}
+{% comment %}
+Страница 403 (FR-20): попытка открыть чужую страницу кабинета.
+{% endcomment %}
+<div class="container page error-page">
+  <p class="error-page__code">403</p>
+  <h1>Нет доступа</h1>
+  <p class="page-subtitle">Эта страница доступна другой роли. Студентам открыты каталог
+     и «Мои заявки», руководителю — заявки на его темы, заведующему отделением — сводка.</p>
+  <a class="btn btn--primary" href="{% url 'core:topics' %}">В каталог тем</a>
+</div>
+{% endblock %}
