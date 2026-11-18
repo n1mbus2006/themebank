@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static core_extras %}
+
+{% block title %}Мои заявки{% endblock %}
+
+{% block content %}
+{% comment %}
+Кабинет студента (занятие 8, макет «09_Мои_заявки»): все свои заявки
+со статусами и причинами отклонения (FR-10), отзыв неодобренных (FR-13).
+На мобильной ширине строка-таблица превращается в карточку.
+{% endcomment %}
+<div class="container page">
+  <h1>Мои заявки</h1>
+  <p class="page-subtitle">Заявки видны только вам. О смене статуса приходит письмо на e-mail (FR-15)</p>
+
+  {% if applications %}
+    <div class="application-list">
+      {% for application in applications %}
+        <article class="application-row">
+          <div class="application-row__main">
+            <h2 class="application-row__title">
+              <a href="{% url 'core:topic_detail' application.topic.pk %}">{{ application.topic.title }}</a>
+            </h2>
+            <p class="application-row__meta">
+              {{ application.topic.supervisor.full_name|short_fio }},
+              {{ application.topic.supervisor.position|lower }} ·
+              {{ application.submitted_at|date:'d.m.Y H:i' }}
+            </p>
+          </div>
+          <span class="badge badge--{{ application.status }}">{{ application.get_status_display }}</span>
+          <div class="application-row__actions">
+            {% if application.status == 'submitted' or application.status == 'in_review' %}
+              <form method="post" action="{% url 'core:application_withdraw' application.pk %}">
+                {% csrf_token %}
+                <button class="btn btn--secondary" type="submit">Отозвать</button>
+              </form>
+            {% endif %}
+          </div>
+          {% if application.status == 'rejected' and application.reject_reason %}
+            <p class="application-row__reason">
+              <strong>Причина отклонения:</strong> {{ application.reject_reason }}
+            </p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <p class="page-note">Статус и причина обновляются автоматически; отозвать можно только заявку, которую ещё не одобрили (FR-13)</p>
+  {% else %}
+    <section class="empty-state">
+      <h2>Вы ещё не подавали заявок</h2>
+      <p>Выберите свободную тему в каталоге и подайте заявку с её карточки.</p>
+      <a class="btn btn--primary" href="{% url 'core:topics' %}">Перейти в каталог</a>
+    </section>
+  {% endif %}
+</div>
+{% endblock %}
