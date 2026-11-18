@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ведомость для печати{% endblock %}
+
+{% block content %}
+{% comment %}
+Печатная форма ведомости (FR-18, макет «10_Ведомость»): сводный список
+закреплённых тем для подготовки приказа. Кнопки и шапка скрываются
+при печати правилом @media print.
+{% endcomment %}
+<div class="container page">
+  <div class="vedomost-head">
+    <div>
+      <h1>Ведомость закрепления тем</h1>
+      <p class="page-subtitle">за {{ academic_year }} учебный год · сформировано {% now 'd.m.Y H:i' %}</p>
+    </div>
+    <div class="vedomost-head__actions no-print">
+      <button class="btn btn--primary" type="button" data-print>Печать</button>
+      <a class="btn btn--secondary" href="{% url 'core:dashboard' %}">Назад к сводке</a>
+    </div>
+  </div>
+
+  {% if rows %}
+    <table class="vedomost-table">
+      <thead>
+        <tr>
+          <th scope="col">№</th>
+          <th scope="col">Тема</th>
+          <th scope="col">Студент</th>
+          <th scope="col">Группа</th>
+          <th scope="col">№ зачётной книжки</th>
+          <th scope="col">Руководитель</th>
+          <th scope="col">Дата закрепления</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for application in rows %}
+          <tr>
+            <td data-label="№">{{ forloop.counter }}</td>
+            <td data-label="Тема">{{ application.topic.title }}</td>
+            <td data-label="Студент">{{ application.student.full_name }}</td>
+            <td data-label="Группа">{{ application.student.group }}</td>
+            <td data-label="№ зачётной книжки">{{ application.student.record_book_number }}</td>
+            <td data-label="Руководитель">{{ application.topic.supervisor.full_name }}</td>
+            <td data-label="Дата закрепления">{{ application.decided_at|date:'d.m.Y' }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <section class="empty-state">
+      <h2>Закреплённых тем пока нет</h2>
+      <p>Ведомость появится, когда руководители одобрят первые заявки.</p>
+      <a class="btn btn--secondary" href="{% url 'core:dashboard' %}">Назад к сводке</a>
+    </section>
+  {% endif %}
+</div>
+{% endblock %}

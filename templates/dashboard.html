@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static core_extras %}
+
+{% block title %}Сводка распределения{% endblock %}
+
+{% block content %}
+{% comment %}
+Сводка заведующего отделением (занятие 8, макет «13_Сводка»):
+четыре показателя, график нагрузки, таблица лимитов (FR-17, FR-22),
+блок приказа (FR-19). Плитки показателей собраны на Flexbox.
+{% endcomment %}
+<div class="container page">
+  <div class="dashboard-head">
+    <h1>Сводка распределения</h1>
+    <div class="dashboard-head__actions">
+      <a class="btn btn--secondary" href="{% url 'core:csv_export' %}">Скачать CSV</a>
+      <a class="btn btn--secondary" href="{% url 'core:vedomost' %}">Ведомость (печать)</a>
+    </div>
+  </div>
+
+  <div class="stat-tiles">
+    <article class="stat-tile">
+      <p class="stat-tile__value">{{ topics_total }}</p>
+      <p class="stat-tile__label">Тем в каталоге</p>
+      <p class="stat-tile__hint">{{ topics_free }} свободных</p>
+    </article>
+    <article class="stat-tile">
+      <p class="stat-tile__value">{{ applications_total }}</p>
+      <p class="stat-tile__label">Заявок подано</p>
+      <p class="stat-tile__hint">за {{ academic_year }}</p>
+    </article>
+    <article class="stat-tile">
+      <p class="stat-tile__value">{{ share }}&nbsp;%</p>
+      <p class="stat-tile__label">Доля закреплённых тем</p>
+      <p class="stat-tile__hint">{{ approved_total }} из {{ topics_total }}</p>
+    </article>
+    <article class="stat-tile">
+      <p class="stat-tile__value">{{ average_load|floatformat:1 }}</p>
+      <p class="stat-tile__label">Средняя загрузка руководителя</p>
+      <p class="stat-tile__hint">студентов на преподавателя</p>
+    </article>
+  </div>
+
+  <div class="dashboard-grid">
+    <section class="card chart-card" aria-label="График нагрузки по руководителям">
+      <h2>Нагрузка по руководителям</h2>
+      <p class="card__hint">закреплено из лимита · {{ academic_year }}</p>
+      <div class="chart" role="img" aria-label="Столбчатый график: у каждого руководителя высота столбца равна лимиту, тёмная часть — закреплённые студенты">
+        {% for row in chart_rows %}
+          <div class="chart__col">
+            <span class="chart__value">{{ row.occupied }}/{{ row.max_students }}</span>
+            <div class="chart__bar">
+              <div class="chart__bar-fill" data-bar-fill data-occupied="{{ row.occupied }}" data-total="{{ row.max_students }}"></div>
+            </div>
+            <span class="chart__name">{{ row.supervisor.full_name|short_fio }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card order-card" aria-label="Приказ о закреплении">
+      <h2>Приказ о закреплении</h2>
+      {% if order %}
+        <div class="order-file">
+          <span class="order-file__icon" aria-hidden="true">PDF</span>
+          <div>
+            <p class="order-file__name">{{ order.file.name|basename }}</p>
+            <p class="order-file__note">
+              {{ order.note }}{% if order.note %} · {% endif %}загружен {{ order.uploaded_at|date:'d.m.Y' }} · виден студентам
+            </p>
+          </div>
+        </div>
+        <a class="btn btn--secondary order-card__download" href="{{ order.file.url }}">Скачать</a>
+      {% else %}
+        <p class="card__hint">Приказ пока не загружен.</p>
+      {% endif %}
+
+      <hr class="card__divider">
+      <h3 class="order-card__subtitle">Загрузить приказ за {{ academic_year }}</h3>
+      <form method="post" action="{% url 'core:order_upload' %}" enctype="multipart/form-data" data-validate-form>
+        {% csrf_token %}
+        <div class="field {% if order_form.file.errors %}field--error{% endif %}">
+          <label class="field__label" for="order-file">Файл приказа (PDF, JPG, PNG · до 5 МБ)</label>
+          {{ order_form.file }}
+          {% for error in order_form.file.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+        </div>
+        <div class="field {% if order_form.note.errors %}field--error{% endif %}">
+          <label class="field__label" for="order-note">Примечание</label>
+          {{ order_form.note }}
+          {% for error in order_form.note.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+        </div>
+        <button class="btn btn--primary btn--wide" type="submit">Загрузить</button>
+      </form>
+    </section>
+  </div>
+
+  <section class="limits" aria-label="Лимиты руководителей">
+    <div class="limits__head">
+      <h2>Лимиты на {{ academic_year }}</h2>
+      <p class="limits__hint">диапазон 1–30, проверка на сервере (FR-22)</p>
+    </div>
+
+    <table class="limits-table">
+      <thead>
+        <tr><th scope="col">Руководитель</th><th scope="col">Лимит</th><th scope="col">Закреплено</th><th scope="col">Остаток</th><th scope="col">Изменить</th></tr>
+      </thead>
+      <tbody>
+        {% for limit in limits %}
+          <tr>
+            <th scope="row">{{ limit.supervisor.full_name }}</th>
+            <td data-label="Лимит">{{ limit.max_students }}</td>
+            <td data-label="Закреплено">{{ limit.occupied }}</td>
+            <td class="limits-table__rest" data-label="Остаток">{{ limit.remaining }}</td>
+            <td data-label="Изменить">
+              <form class="limits-table__form" method="post" action="{% url 'core:limit_update' limit.pk %}" data-validate-form>
+                {% csrf_token %}
+                <label class="visually-hidden" for="limit-{{ limit.pk }}">Новый лимит для {{ limit.supervisor.full_name }}</label>
+                <input type="number" id="limit-{{ limit.pk }}" name="max_students" value="{{ limit.max_students }}"
+                       min="1" max="30" data-validate="required,int,range:1-30">
+                <button class="btn btn--primary" type="submit">Сохранить</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="page-note">…лимит создаётся на учебный год, остаток вычисляется по одобренным заявкам</p>
+  </section>
+</div>
+{% endblock %}

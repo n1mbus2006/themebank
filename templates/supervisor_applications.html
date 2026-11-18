@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Заявки на мои темы{% endblock %}
+
+{% block content %}
+{% comment %}
+Кабинет руководителя (занятие 8, макет «11_Заявки_руководителя»):
+плитка нагрузки (FR-16), рассмотрение заявок (FR-11), одобрение
+выполняется одной транзакцией (FR-12).
+{% endcomment %}
+<div class="container page">
+  <h1>Заявки на мои темы</h1>
+  <p class="page-subtitle">Рассмотрение заявок — процесс П1; одобрение выполняется в одной транзакции (FR-12)</p>
+
+  <section class="load-tile" aria-label="Нагрузка руководителя">
+    <div class="load-tile__info">
+      <p class="load-tile__caption">
+        Нагрузка · {{ academic_year }}{% if limit %} · лимит {{ limit.max_students }}{% endif %}
+      </p>
+      <p class="load-tile__numbers">
+        {% if limit %}
+          Закреплено {{ limit.occupied }} из {{ limit.max_students }}
+          <span class="load-tile__rest">остаток {{ limit.remaining }} места</span>
+        {% else %}
+          Лимит на {{ academic_year }} не задан
+        {% endif %}
+      </p>
+    </div>
+    {% if limit %}
+      <div class="load-tile__bar" role="img" aria-label="Занято {{ limit.occupied }} из {{ limit.max_students }} мест лимита">
+        <div class="load-tile__bar-fill" data-bar-fill data-occupied="{{ limit.occupied }}" data-total="{{ limit.max_students }}"></div>
+      </div>
+      <p class="load-tile__percent">
+        {% widthratio limit.occupied limit.max_students 100 as percent %}{{ percent }} % лимита занято
+      </p>
+    {% endif %}
+  </section>
+
+  {% if applications %}
+    <div class="application-list">
+      {% for application in applications %}
+        <article class="application-row application-row--supervisor">
+          <div class="application-row__student">
+            <h2 class="application-row__name">{{ application.student.full_name }}</h2>
+            <p class="application-row__meta">
+              {{ application.student.group }} · № {{ application.student.record_book_number }}<br>
+              заявка подана {{ application.submitted_at|date:'d.m.Y' }}
+            </p>
+          </div>
+          <div class="application-row__topic">
+            <p class="application-row__title">{{ application.topic.title }}</p>
+            {% if application.comment %}<p class="application-row__comment">«{{ application.comment }}»</p>{% endif %}
+          </div>
+          <span class="badge badge--{{ application.status }}">{{ application.get_status_display }}</span>
+          <div class="application-row__actions">
+            {% if application.status == 'submitted' or application.status == 'in_review' %}
+              <form method="post" action="{% url 'core:application_approve' application.pk %}">
+                {% csrf_token %}
+                <button class="btn btn--primary" type="submit">Одобрить</button>
+              </form>
+              <button class="btn btn--danger-outline" type="button" data-reject-toggle="reject-form-{{ application.pk }}">Отклонить</button>
+            {% endif %}
+          </div>
+          {% if application.status == 'rejected' and application.reject_reason %}
+            <p class="application-row__reason">
+              <strong>Причина отклонения:</strong> {{ application.reject_reason }}
+            </p>
+          {% endif %}
+
+          {% if application.status == 'submitted' or application.status == 'in_review' %}
+            <form class="reject-form" id="reject-form-{{ application.pk }}" method="post"
+                  action="{% url 'core:application_reject' application.pk %}" data-validate-form hidden>
+              {% csrf_token %}
+              <div class="field">
+                <label class="field__label" for="reason-{{ application.pk }}">Причина отклонения (обязательно)</label>
+                <textarea id="reason-{{ application.pk }}" name="reason" rows="3" maxlength="500"
+                          data-validate="required,maxlen:500"></textarea>
+              </div>
+              <div class="reject-form__actions">
+                <button class="btn btn--danger-outline" type="submit">Отклонить</button>
+                <button class="btn btn--secondary" type="button" data-reject-cancel>Отмена</button>
+              </div>
+            </form>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <p class="page-note">Одобрение: заявка «Одобрена», тема «Закреплена», лимит −1 — одна транзакция; студенту уходит письмо</p>
+  {% else %}
+    <section class="empty-state">
+      <h2>Заявок пока нет</h2>
+      <p>Когда студенты подадут заявки на ваши темы, они появятся здесь.</p>
+      <a class="btn btn--secondary" href="{% url 'core:topics' %}">Открыть каталог</a>
+    </section>
+  {% endif %}
+</div>
+{% endblock %}
