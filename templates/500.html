@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Ошибка сервера{% endblock %}
+
+{% block content %}
+{% comment %}
+Страница 500 (NFR-07): посетитель видит обычную страницу, без технической
+трассировки; детали попадают в журнал сервера.
+{% endcomment %}
+<div class="container page error-page">
+  <p class="error-page__code">500</p>
+  <h1>Ошибка сервера</h1>
+  <p class="page-subtitle">Что-то сломалось на нашей стороне, данные не потеряны.
+     Попробуйте обновить страницу или вернуться в каталог.</p>
+  <a class="btn btn--primary" href="{% url 'core:topics' %}">В каталог тем</a>
+</div>
+{% endblock %}

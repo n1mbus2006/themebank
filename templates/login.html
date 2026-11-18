@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+{% comment %}
+Вход (FR-21, макет «05_Вход»): стандартная форма django.contrib.auth,
+ошибка авторизации одной строкой, после входа возврат на просмотренную
+тему через параметр next.
+{% endcomment %}
+<div class="container page auth-page">
+  <section class="auth-card">
+    <h1>Вход в систему</h1>
+    <p class="page-subtitle">Формы работают через django.contrib.auth (FR-21)</p>
+
+    {% if form.non_field_errors %}
+      <div class="alert alert--danger" role="alert">
+        <p><strong>Неверный логин или пароль</strong><br>Проверьте раскладку и повторите попытку.</p>
+        <button type="button" class="alert__close" aria-label="Закрыть">&times;</button>
+      </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'accounts:login' %}" data-validate-form>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
+
+      <div class="field {% if form.username.errors %}field--error{% endif %}">
+        <label class="field__label" for="id_username">Логин или e-mail</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+      </div>
+
+      <div class="field {% if form.password.errors %}field--error{% endif %}">
+        <label class="field__label" for="id_password">Пароль</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+      </div>
+
+      <button class="btn btn--primary btn--wide" type="submit">Войти</button>
+    </form>
+
+    <hr class="auth-card__divider">
+    <a class="btn btn--secondary btn--wide" href="{% url 'accounts:register' %}">Создать аккаунт</a>
+    <p class="auth-card__note">После входа вернётесь на просмотренную тему</p>
+  </section>
+</div>
+{% endblock %}

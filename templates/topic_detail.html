@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static core_extras %}
+
+{% block title %}{{ page_title|truncatechars:60 }}{% endblock %}
+
+{% block content %}
+{% comment %}
+Карточка темы (занятие 8, макет «03_Карточка_темы»): описание, блок
+руководителя с остатком лимита (FR-09), форма заявки (FR-06).
+Статус и лимит обновляются fetch-запросом без перезагрузки (FR-23),
+за это отвечает data-topic-* разметка и script topic.js.
+{% endcomment %}
+<div class="container page page--narrow" data-topic-status data-topic-url="{% url 'core:topic_status' topic.pk %}">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a href="{% url 'core:topics' %}">Каталог тем</a>
+    <span aria-hidden="true">&rsaquo;</span>
+    <span>{{ topic.title|truncatechars:50 }}</span>
+  </nav>
+
+  <h1>{{ topic.title }}</h1>
+
+  <p class="badge-row">
+    <span class="badge badge--neutral">{{ topic.get_work_type_display }}</span>
+    <span class="badge badge--status js-topic-badge" data-badge data-status="{{ topic.status }}">{{ topic.get_status_display }}</span>
+    <span class="badge-row__meta">{{ topic.direction }} · {{ topic.academic_year }}</span>
+  </p>
+
+  <p class="topic-description">{{ topic.description }}</p>
+
+  <section class="supervisor-card" aria-label="Руководитель работы">
+    <div class="supervisor-card__person">
+      <span class="avatar avatar--big" aria-hidden="true">{{ topic.supervisor.full_name|initials }}</span>
+      <div>
+        <p class="supervisor-card__name">{{ topic.supervisor.full_name }}</p>
+        <p class="supervisor-card__role">{{ topic.supervisor.position }} · {{ topic.supervisor.department }}</p>
+      </div>
+    </div>
+    <div class="supervisor-card__load">
+      <p class="supervisor-card__numbers js-topic-load">
+        {% if limit %}
+          Закреплено {{ limit.occupied }} из {{ limit.max_students }}
+        {% else %}
+          Лимит не задан
+        {% endif %}
+      </p>
+      <p class="supervisor-card__hint">
+        {% if limit %}лимит на {{ topic.academic_year }} · остаток {{ limit.remaining }}{% endif %}
+      </p>
+    </div>
+  </section>
+
+  {% if topic.status == 'taken' %}
+    <section class="apply-block">
+      <h2>Подача заявки</h2>
+      <div class="alert alert--danger" role="alert">
+        <p><strong>Тема уже закреплена</strong><br>Тема закреплена за другим студентом. Выберите другую тему из каталога.</p>
+      </div>
+      <span class="btn btn--disabled" aria-disabled="true">Подать заявку</span>
+    </section>
+  {% elif role == 'student' %}
+    {% if my_application and my_application.status == 'approved' %}
+      <section class="apply-block">
+        <h2>Заявка одобрена</h2>
+        <div class="alert alert--success" role="status">
+          <p><strong>Тема закреплена за вами.</strong> Статус можно посмотреть в «Моих заявках».</p>
+        </div>
+      </section>
+    {% elif my_application_active %}
+
+      <section class="apply-block">
+        <h2>Заявка подана</h2>
+        <div class="alert alert--info" role="status">
+          <p><strong>Заявка на эту тему уже подана</strong> ({{ my_application.get_status_display|lower }}).
+             Руководитель рассмотрит её и даст ответ.</p>
+        </div>
+        <a class="btn btn--secondary" href="{% url 'core:my_applications' %}">Перейти в «Мои заявки»</a>
+      </section>
+    {% else %}
+      <section class="apply-block" id="apply">
+        <h2>Подача заявки</h2>
+        <form method="post" action="{% url 'core:application_create' topic.pk %}" data-validate-form>
+          {% csrf_token %}
+          <div class="field {% if form.comment.errors %}field--error{% endif %}">
+            {{ form.comment.label_tag }}
+            {{ form.comment }}
+            {% for error in form.comment.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+          </div>
+          <button class="btn btn--primary btn--wide {% if server_reject %}btn--error{% endif %}" type="submit">Подать заявку</button>
+          <p class="apply-block__note">Статус темы и остаток лимита обновляются автоматически (fetch, FR-23)</p>
+        </form>
+      </section>
+    {% endif %}
+  {% elif role == 'guest' %}
+    <section class="apply-block" id="apply">
+      <h2>Подача заявки</h2>
+      <p class="page-subtitle">Подать заявку может авторизованный студент.</p>
+      <a class="btn btn--primary" href="{% url 'accounts:login' %}?next={{ request.get_full_path|urlencode }}">Войдите, чтобы подать заявку</a>
+    </section>
+  {% else %}
+    <section class="apply-block">
+      <h2>Подача заявки</h2>
+      <p class="page-subtitle">Заявки на темы подают студенты со своих аккаунтов.</p>
+    </section>
+  {% endif %}
+
+  {# Баннер появляется из script topic.js, если тему забрали, пока открыта форма. #}
+  <div class="alert alert--danger alert--inline" role="alert" data-taken-alert hidden>
+    <p><strong>Тема уже закреплена</strong><br>Тема закреплена за другим студентом. Выберите другую тему из каталога.</p>
+    <button type="button" class="alert__close" aria-label="Закрыть">&times;</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/topic.js' %}" defer></script>{% endblock %}
