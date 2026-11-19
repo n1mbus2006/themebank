@@ -186,6 +186,85 @@ def topic_detail(request, pk):
         Topic.objects.select_related('supervisor', 'direction'), pk=pk,
     )
     return render(request, 'topic_detail.html', _topic_context(request, topic))
+def topic_status(request, pk):
+    """JSON со статусом темы и остатком лимита (FR-23).
+
+    К нему ходит fetch со страницы темы: бейдж статуса и строка
+    «Закреплено 3 из 5» обновляются без перезагрузки.
+    """
+    topic = get_object_or_404(Topic, pk=pk)
+    limit = SupervisorLimit.objects.filter(
+        supervisor=topic.supervisor, academic_year=topic.academic_year,
+    ).first()
+    return JsonResponse({
+        'status': topic.status,
+        'status_label': topic.get_status_display(),
+        'is_free': topic.is_free(),
+        'occupied': limit.occupied() if limit else 0,
+        'max_students': limit.max_students if limit else 0,
+        'remaining': limit.remaining() if limit else 0,
+    })
+
+
+def topic_suggest(request):
+    """JSON для живого поиска в шапке: до 6 подходящих тем."""
+    query = request.GET.get('q', '').strip()
+    items = []
+    if len(query) >= 2:
+        topics = Topic.objects.filter(
+            academic_year=Topic.CURRENT_YEAR,
+        ).filter(
+            Q(title__icontains=query) | Q(supervisor__full_name__icontains=query),
+        ).select_related('supervisor')[:6]
+        items = [{
+            'id': t.id,
+            'url': reverse('core:topic_detail', args=[t.id]),
+            'title': t.title[:70],
+            'supervisor': t.supervisor.full_name,
+            'status_label': t.get_status_display(),
+            'is_free': t.is_free(),
+        } for t in topics]
+    return JsonResponse({'items': items, 'query': query})
+
+
+@login_required
+@role_required(ROLE_STUDENT)
+def application_create(request, pk):
+    """Подача заявки (FR-06): только POST, проверка занятости и лимита.
+
+    Двум студентам, нажавшим «Подать заявку» одновременно, форма обе
+    пройдёт (обе записи «Подана» — это разрешено), но одобрить вторую
+    нельзя: уникальный частичный индекс из занятия 5 не даст базе
+    записать вторую одобренную заявку на тему.
+    """
+    topic = get_object_or_404(Topic, pk=pk)
+    student = (
+        request.user.student_profile
+        if hasattr(request.user, 'student_profile') else None
+    )
+    if student is None:
+        raise PermissionDenied
+    if request.method != 'POST':
+        return redirect('core:topic_detail', pk=topic.pk)
+
+    form = ApplicationForm(request.POST, topic=topic, student=student)
+    if form.is_valid():
+        with transaction.atomic():
+            Application.objects.create(
+                student=student,
+                topic=topic,
+                status=Application.Status.SUBMITTED,
+                comment=form.cleaned_data['comment'],
+            )
+        messages.success(request, 'Заявка подана. Руководитель получит уведомление.')
+        return redirect('core:my_applications')
+
+    messages.error(request, 'Заявку не удалось отправить: исправьте ошибки в форме.')
+    context = _topic_context(request, topic, form=form)
+    context['server_reject'] = True
+    return render(request, 'topic_detail.html', context, status=200)
+
+
 @login_required
 @role_required(ROLE_STUDENT)
 def my_applications(request):
