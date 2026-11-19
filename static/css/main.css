@@ -1958,6 +1958,51 @@ a.application-row__title:hover {
   margin: 0 auto 24px;
 }
 
+/* ===== 18. Печать ведомости (FR-18) ===== */
+@media print {
+  .site-header,
+  .site-footer,
+  .no-print,
+  .skip-link,
+  .messages {
+    display: none !important;
+  }
+
+  body {
+    color: #000000;
+    background: #FFFFFF;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vedomost-head {
+    margin-bottom: 12mm;
+  }
+
+  .vedomost-table {
+    font-size: 10.5pt;
+    border-collapse: collapse;
+  }
+
+  .vedomost-table th,
+  .vedomost-table td {
+    border: 1px solid #000000;
+    padding: 2mm 3mm;
+  }
+
+  .vedomost-table tbody th {
+    text-align: left;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}
+
 /* ===== 19. Планшет: 768-1023 ===== */
 @media (max-width: 1220px) {
   .dashboard-grid {
