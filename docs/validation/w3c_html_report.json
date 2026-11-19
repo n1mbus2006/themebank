@@ -1,0 +1,56 @@
+[
+ {
+  "name": "catalog",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "topic_card",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "login",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "register",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "about",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "my_apps",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "supervisor",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "dashboard",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ },
+ {
+  "name": "vedomost",
+  "errors": 0,
+  "warnings": 0,
+  "first_errors": []
+ }
+]
