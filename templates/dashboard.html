@@ -19,26 +19,26 @@
   </div>
 
   <div class="stat-tiles">
-    <article class="stat-tile">
+    <div class="stat-tile">
       <p class="stat-tile__value">{{ topics_total }}</p>
       <p class="stat-tile__label">Тем в каталоге</p>
       <p class="stat-tile__hint">{{ topics_free }} свободных</p>
-    </article>
-    <article class="stat-tile">
+    </div>
+    <div class="stat-tile">
       <p class="stat-tile__value">{{ applications_total }}</p>
       <p class="stat-tile__label">Заявок подано</p>
       <p class="stat-tile__hint">за {{ academic_year }}</p>
-    </article>
-    <article class="stat-tile">
+    </div>
+    <div class="stat-tile">
       <p class="stat-tile__value">{{ share }}&nbsp;%</p>
       <p class="stat-tile__label">Доля закреплённых тем</p>
       <p class="stat-tile__hint">{{ approved_total }} из {{ topics_total }}</p>
-    </article>
-    <article class="stat-tile">
+    </div>
+    <div class="stat-tile">
       <p class="stat-tile__value">{{ average_load|floatformat:1 }}</p>
       <p class="stat-tile__label">Средняя загрузка руководителя</p>
       <p class="stat-tile__hint">студентов на преподавателя</p>
-    </article>
+    </div>
   </div>
 
   <div class="dashboard-grid">
@@ -80,12 +80,12 @@
       <form method="post" action="{% url 'core:order_upload' %}" enctype="multipart/form-data" data-validate-form>
         {% csrf_token %}
         <div class="field {% if order_form.file.errors %}field--error{% endif %}">
-          <label class="field__label" for="order-file">Файл приказа (PDF, JPG, PNG · до 5 МБ)</label>
+          <label class="field__label" for="id_file">Файл приказа (PDF, JPG, PNG · до 5 МБ)</label>
           {{ order_form.file }}
           {% for error in order_form.file.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
         </div>
         <div class="field {% if order_form.note.errors %}field--error{% endif %}">
-          <label class="field__label" for="order-note">Примечание</label>
+          <label class="field__label" for="id_note">Примечание</label>
           {{ order_form.note }}
           {% for error in order_form.note.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
         </div>

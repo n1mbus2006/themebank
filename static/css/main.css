@@ -1013,6 +1013,13 @@ h2 {
   font-weight: 600;
 }
 
+/* Заголовок панели — h2 для иерархии заголовков (W3C), стили не меняет. */
+.filters__title {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
 .filters__toggle summary::-webkit-details-marker {
   display: none;
 }
@@ -1217,7 +1224,8 @@ h2 {
 .pagination__note {
   margin-left: 12px;
   font-size: 14px;
-  color: var(--ink-400);
+  /* ink-600 вместо ink-400: контраст 4.5:1 на фоне страницы (Lighthouse). */
+  color: var(--ink-600);
 }
 
 /* ===== 11. Карточка темы ===== */

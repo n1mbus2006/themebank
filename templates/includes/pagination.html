@@ -9,7 +9,7 @@
     <a class="pagination__arrow" href="?{% if base_params %}{{ base_params.urlencode }}&amp;{% endif %}page={{ page_obj.previous_page_number }}"
        aria-label="Предыдущая страница">&lsaquo;</a>
   {% else %}
-    <span class="pagination__arrow" aria-disabled="true">&lsaquo;</span>
+    <span class="pagination__arrow">&lsaquo;</span>
   {% endif %}
 
   {% for number in page_obj.paginator.get_elastic_page_numbers %}
@@ -26,7 +26,7 @@
     <a class="pagination__arrow" href="?{% if base_params %}{{ base_params.urlencode }}&amp;{% endif %}page={{ page_obj.next_page_number }}"
        aria-label="Следующая страница">&rsaquo;</a>
   {% else %}
-    <span class="pagination__arrow" aria-disabled="true">&rsaquo;</span>
+    <span class="pagination__arrow">&rsaquo;</span>
   {% endif %}
 
   <span class="pagination__note">по {{ page_obj.paginator.per_page }} тем на странице</span>

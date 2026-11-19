@@ -44,7 +44,7 @@
     <aside class="filters" aria-label="Фильтры каталога">
       <details class="filters__toggle" {% if request.GET.direction or request.GET.supervisor or request.GET.status or request.GET.work_type %}open{% endif %}>
         <summary>
-          Фильтры
+          <h2 class="filters__title">Фильтры</h2>
           {% if request.GET.direction or request.GET.supervisor or request.GET.status or request.GET.work_type %}
             <span class="filters__count">применены</span>
           {% endif %}
