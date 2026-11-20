@@ -65,7 +65,9 @@ def register(request):
     form = RegisterForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         user = form.save()
-        login(request, user)
+        # Бэкендов два (e-mail и стандартный), поэтому вход после регистрации
+        # требует явного указания, каким из них аутентифицирован пользователь.
+        login(request, user, backend='accounts.backends.EmailOrUsernameBackend')
         role_label = 'студент' if form.cleaned_data['role'] == 'student' else 'руководитель'
         messages.success(request, f'Аккаунт создан, вы вошли как {role_label}.')
         return redirect('core:topics')
